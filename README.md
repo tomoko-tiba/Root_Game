@@ -201,6 +201,9 @@ public class PlayerPosReset : ManagerBase<PlayerPosReset>
 **增加摇杆控制视角转动**
 
 我们加入了joystick控制角色移动，摇杆可以单独控制视角转动，不会和上下左右键冲突。改动之后，玩家前后左右的移动控制和左右转动能够被同时控制。
+
+  ![1685811541485](https://github.com/tomoko-tiba/Root_Game/assets/41440180/933aec1b-6211-4794-a2fd-9de7b48ccf3d)
+  
 ```C++
   //arduino
 
@@ -216,7 +219,6 @@ public class PlayerPosReset : ManagerBase<PlayerPosReset>
     Keyboard.write('E'); 
   }
 ```
-//arduino图片
 
 ### Boss决战环节改进
 
