@@ -1,10 +1,4 @@
-# Root_Game
-> Note: Standard Readme is designed for open source libraries. Although it's [historically](README.md#background) made for Node and npm projects, it also applies to libraries in other languages and package managers.
-
-**Requirements:**
-  - Be called README.md (with capitalization).
-
-  _Note: This is only a navigation guide for the specification, and does not define or mandate terms for any specification-compliant documents._
+# Root_Game 开发日志
 
 ## 第一阶段开发过程
   
@@ -15,6 +9,29 @@
 ![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/7e74f0d2-d9e4-4c71-aa91-7f492cc153fc)
   
 在游戏开发的初期，我们先进行了游戏美术的设计。主要分为两部分，一个是场景，我们使用美术资源在untiy搭建了大楼的走廊场景和各个房间的场景，二是角色模型，我们使用nomad制作了怪兽和boss的模型。
+
+
+游戏场景
+我们的游戏环境由由系统文件夹表示的各种“房间”组成，玩家可以在其中导航。每个房间都可以包含病毒（怪物）、电池（生命值增强器）或技能。
+
+![image](https://github.com/YingTao-22019022/Final-Project-Creative-Making-Advanced-Visualisation-and-Computational-Environments-main/blob/master/photo/clip_image004.png)
+
+游戏中的房间
+使用 Blender、Nomad 和 C4D，我们设计了怪物来直观地代表不同类型的错误或病毒。首领怪物“超级病毒”被设计得特别具有挑战性。
+
+
+
+游戏中有两个版本的怪物
+玩家可以使用四个按钮（用于四个方向的移动）、操纵杆（用于摄像机旋转）和声音传感器（用于“F”键攻击）来控制游戏角色。此外，可以使用四个超声波传感器触发技能。
+
+该游戏具有五种独特技能：电池、JavaScript、Java、C# 和 Python。这些技能以编程语言的形式表现出来，可以用来杀死怪物或削弱boss。
+
+
+
+技能
+在虚拟游戏的背景下，传感器用于弥合物理世界和数字游戏环境之间的差距。它们允许玩家以更切实、更身临其境的方式与游戏互动。硬件部分我们选择了超声波传感器、声音传感器、操纵杆和方向控制键。
+
+我们选择超声波传感器有几个原因。首先，它具有良好的环境稳定性，在各种环境条件下都表现良好。它不受灰尘、污垢或高环境光水平的影响，这使它们成为公共游戏安装的可靠选择。其次，它不需要与目标物体进行物理接触来检测其存在。因此，可以让玩家更容易地通过使用方块来控制技能的释放。第三，它对颜色和透明度不敏感。与光学传感器不同，超声波传感器不受其检测物体的颜色或透明度的影响。无论玩家的外表或服装如何，这都可以确保一致的性能。我们还考虑了红外传感器。
 
 **unity渲染管线优化**
 
