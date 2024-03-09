@@ -25,12 +25,6 @@
 
 ![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/d7555a94-7856-4811-a6cc-aaab81a53360)
 
-**游戏中有两个版本的怪物**
-
-玩家可以使用四个按钮（用于四个方向的移动）、操纵杆（用于摄像机旋转）和声音传感器（用于“F”键攻击）来控制游戏角色。此外，可以使用四个超声波传感器触发技能。
-
-![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/9a754494-8831-456d-9d76-912d4ddc1d17)
-
 
 **该游戏具有五种独特技能：**
 
