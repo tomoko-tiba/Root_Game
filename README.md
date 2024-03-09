@@ -11,27 +11,33 @@
 在游戏开发的初期，我们先进行了游戏美术的设计。主要分为两部分，一个是场景，我们使用美术资源在untiy搭建了大楼的走廊场景和各个房间的场景，二是角色模型，我们使用nomad制作了怪兽和boss的模型。
 
 
-游戏场景
+**游戏场景**
+
 我们的游戏环境由由系统文件夹表示的各种“房间”组成，玩家可以在其中导航。每个房间都可以包含病毒（怪物）、电池（生命值增强器）或技能。
 
 ![image](https://github.com/YingTao-22019022/Final-Project-Creative-Making-Advanced-Visualisation-and-Computational-Environments-main/blob/master/photo/clip_image004.png)
 
-游戏中的房间
+**游戏中的房间**
+
 使用 Blender、Nomad 和 C4D，我们设计了怪物来直观地代表不同类型的错误或病毒。首领怪物“超级病毒”被设计得特别具有挑战性。
 
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/d66e4de4-faed-4e66-825a-34240d6d29c7)
 
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/d7555a94-7856-4811-a6cc-aaab81a53360)
 
-游戏中有两个版本的怪物
+**游戏中有两个版本的怪物**
+
 玩家可以使用四个按钮（用于四个方向的移动）、操纵杆（用于摄像机旋转）和声音传感器（用于“F”键攻击）来控制游戏角色。此外，可以使用四个超声波传感器触发技能。
 
-该游戏具有五种独特技能：电池、JavaScript、Java、C# 和 Python。这些技能以编程语言的形式表现出来，可以用来杀死怪物或削弱boss。
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/9a754494-8831-456d-9d76-912d4ddc1d17)
 
 
+**该游戏具有五种独特技能：**
 
-技能
-在虚拟游戏的背景下，传感器用于弥合物理世界和数字游戏环境之间的差距。它们允许玩家以更切实、更身临其境的方式与游戏互动。硬件部分我们选择了超声波传感器、声音传感器、操纵杆和方向控制键。
+电池、JavaScript、Java、C# 和 Python。这些技能以编程语言的形式表现出来，可以用来杀死怪物或削弱boss。
 
-我们选择超声波传感器有几个原因。首先，它具有良好的环境稳定性，在各种环境条件下都表现良好。它不受灰尘、污垢或高环境光水平的影响，这使它们成为公共游戏安装的可靠选择。其次，它不需要与目标物体进行物理接触来检测其存在。因此，可以让玩家更容易地通过使用方块来控制技能的释放。第三，它对颜色和透明度不敏感。与光学传感器不同，超声波传感器不受其检测物体的颜色或透明度的影响。无论玩家的外表或服装如何，这都可以确保一致的性能。我们还考虑了红外传感器。
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/d6f50d65-9e71-4fda-8753-0e072528f8ec)
+
 
 **unity渲染管线优化**
 
@@ -209,6 +215,21 @@ public class PlayerPosReset : ManagerBase<PlayerPosReset>
 ```
 加载新场景前，调用```PlayerPosReset.Instance.SaveData();```保存当前位置。
 
+**玩家操作系统**
+
+当玩家使用技能时，游戏会调用“子弹预制件”来创建实例化的子弹，并且还减少了UI技能计数的显示。在开发初期我使用“if”语句判断当前玩家的行为状态，然而“if”语句无法保证玩家状态的唯一性，经常同时触发多个状态，在使用“switch”语句进行优化后修复了上述问题。
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/9cdc8c40-3941-4ec6-8ecd-b7c9200d94fe)
+
+过程中遇到了子弹发射位置的问题。发射点是子弹实例化和发射的点。我们必须精确定位它，使子弹看起来像是来自角色的枪。为了解决这个问题，我们使用“firePoint”变量来定义子弹实例化的确切点。
+
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/c7ab834e-9928-4dda-af3b-2114dc0e3dea)
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/2c53897e-5463-45d3-ba48-b97c5faf6dbd)
+
+最后，对撞机的定位和尺寸也是一个挑战。除了玩家和怪物的技能之外，boss还有三种不同的技能。一种技能是从天而降的流星，一种技能是大范围效果技能，还有一种技能是光束。每个碰撞器都需要准确设置。我们必须确保它们的位置和大小正确，以便攻击触发合理且现实。为此，我们使用了 Unity 的碰撞器组件，并在 Unity 编辑器中调整了它们的大小和位置，直到达到预期的结果。
+
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/287e265d-92f8-4814-b4d5-d835694180c0)
+
+
 ## 第二阶段迭代过程
   
 ### 优化玩家角色视角和移动的控制方式
@@ -241,5 +262,13 @@ public class PlayerPosReset : ManagerBase<PlayerPosReset>
 
 在原来的版本中，玩家使用收集到的四个技能物品进行攻击，但是四个技能的攻击区别只体现在boss四个血条的变化上，缺少游戏的趣味性，互动体验不好。于是我们改进了Boss的模型，将每个技能攻击的目标对应为boss上四个部分（左手，右手，盾，后背的武器）。当其中一个血条为0时，对应的boss身体部分也会掉落，给用户更多的反馈。
 
-//然后贴一下修改之后的boss图
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/2a514495-b6a6-4e54-8e70-b816734ab980)
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/d9383bc0-698b-4dfd-b545-b64c82593bff)
+
+### 反思和今后的工作
+
+在之前的尝试中，我们的代码不够简洁；我们经常使用“if”或“switch”语句，这不仅导致许多代码不断更新，而且还导致代码冗余，导致游戏卡顿。这些实际上可以用“字典”替换以简化代码。展望未来，我们计划提高编码技能以优化游戏。
+
+![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/75dfa9bc-f5cc-445d-8e34-a238b7fad08e)
+
 
