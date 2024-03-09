@@ -212,6 +212,7 @@ public class PlayerPosReset : ManagerBase<PlayerPosReset>
 ### 04_玩家操作系统
 
 当玩家使用技能时，游戏会调用“子弹预制件”来创建实例化的子弹，并且还减少了UI技能计数的显示。在开发初期我使用“if”语句判断当前玩家的行为状态，然而“if”语句无法保证玩家状态的唯一性，经常同时触发多个状态，在使用“switch”语句进行优化后修复了上述问题。
+
 ![image](https://github.com/tomoko-tiba/Root_Game/assets/41440180/9cdc8c40-3941-4ec6-8ecd-b7c9200d94fe)
 
 过程中遇到了子弹发射位置的问题。发射点是子弹实例化和发射的点。我们必须精确定位它，使子弹看起来像是来自角色的枪。为了解决这个问题，我们使用“firePoint”变量来定义子弹实例化的确切点。
